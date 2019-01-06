@@ -1,1 +1,12 @@
 <h1>Home</h1>
+<p>This the homepage</p>
+<?php
+  ob_start();
+  $output = '';
+  foreach($posts as $post) {
+    $content = $post->getContent();
+    echo '<h2>' . $content['title'] . '</h2><br>';
+    echo nl2br($content['body']) ;
+  }
+  ob_end_flush();
+?>

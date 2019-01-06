@@ -24,8 +24,8 @@ class Db {
     return self::$conn;
   }
 
-  public static function query($stmt, $parameters = array()) {
-    $stmt = self::$conn->prepare($stmt);
+  public static function query($sql, $parameters = array()) {
+    $stmt = self::$conn->prepare($sql);
     $stmt->execute($parameters);
     return $stmt;
   }

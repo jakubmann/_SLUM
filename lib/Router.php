@@ -2,18 +2,26 @@
 function classLoader($class) {
   if (preg_match('/_controller/', $class)) {
     require('controllers/' . $class . '.php');
-  } 
+  }
+  else {
+    require('models/' . $class . '.php');
+  }
 }
 
 spl_autoload_register('classLoader');
 
 class Router {
+  private function error() {
+    $controller = new error_controller();
+    $controller->renderView();
+    exit();
+  }
+
   public function __construct() {
     //URL handling
     $url = isset($_GET['url']) ? $_GET['url'] : null;
     $url = rtrim($url, '/');
     $url = explode('/', $url);
-    print_r($url);
 
     //setting variables
     $name = $url[0];
@@ -32,10 +40,9 @@ class Router {
         $controller = new $name();
       }
       else {
-        $controller = new error_controller();
-        $controller->renderView();
-        exit;
+        $this->error();
       }
+
       if (isset($method)) {
         if (method_exists($controller, $method)) {
           if (isset($arg)) {
@@ -44,6 +51,10 @@ class Router {
           else {
             $controller->{$method}();
           }
+
+        }
+        else {
+          $this->error();
         }
       }
     }
