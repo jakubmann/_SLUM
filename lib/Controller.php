@@ -2,16 +2,12 @@
 
 abstract class Controller {
   protected $data = array();
-  protected $view = "";
+  protected $view;
+  protected $model;
 
-  public function renderView() {
-    if ($this->view) {
-      ob_start();
-      extract($this->data);
-      $template = 'views/template.phtml';
-      $view_data = 'views/' . $this->view . '.phtml';
-      require $template;
-      ob_end_flush();
+  public function __construct() {
+    if (isset($this->data)) {
+      $this->view = new View($this->data);
     }
   }
 

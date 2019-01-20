@@ -2,9 +2,13 @@
 
 class home_controller extends Controller {
   public function __construct() {
+
     $this->data['title'] = 'Home';
-    $this->view = 'home';
-    $posts = new Posts();
-    $this->data['posts'] = $posts->getPosts(2);
+
+    $this->model = new Posts();
+    $this->data['posts'] = $this->model->getPosts(5);
+
+    parent::__construct();
+    $this->view->render('layout', 'home');
   }
 }

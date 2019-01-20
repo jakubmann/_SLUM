@@ -6,7 +6,9 @@
   foreach($posts as $post) {
     $content = $post->getContent();
     echo '<h2>' . $content['title'] . '</h2><br>';
+    echo '<br><a href=/user/id/' . $content['author'] , '>' . $content['authorName'] .'<a><br>';
     echo nl2br($content['body']) ;
+    echo '<br><a href=/post/show/' . $content['id'] , '>Show Post<a>';
   }
   ob_end_flush();
 ?>

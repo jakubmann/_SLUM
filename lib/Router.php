@@ -13,7 +13,6 @@ spl_autoload_register('classLoader');
 class Router {
   private function error() {
     $controller = new error_controller();
-    $controller->renderView();
     exit();
   }
 
@@ -61,6 +60,5 @@ class Router {
     else {
       $controller = new home_controller();
     }
-    $controller->renderView();
   }
 }
