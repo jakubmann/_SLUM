@@ -1,12 +1,13 @@
 <!doctype html>
 <html>
-  <head>
-    <title><?= $title; ?></title>
-  </head>
+    <head>
+        <title><?= $title; ?></title>
+        <link rel='stylesheet' type='text/css' href='/public/css/main.css'>  
+    </head>
 
-  <body>
-    <?php require 'template/header.php'; ?>
-    <?php require $filename ?>
-    <?php require 'template/footer.php'; ?>
-  </body>
+    <body>
+        <?php require 'template/header.php'; ?>
+        <?php require $filename ?>
+        <?php require 'template/footer.php'; ?>
+    </body>
 </html>

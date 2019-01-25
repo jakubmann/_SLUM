@@ -5,8 +5,8 @@ function classLoader($class) {
   if (preg_match('/_controller/', $class)) {
     require('controllers/' . $class . '.php');
   }
-  else if (file_exists('models/' . $class . '.php')) {
-    require('models/' . $class . '.php');
+  else if (file_exists('models/' . strtolower($class) . '.php')) {
+    require('models/' . strtolower($class) . '.php');
   }
 }
 

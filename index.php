@@ -1,7 +1,7 @@
 <?php
 function autoload($class) {
-  if (file_exists('lib/' . $class . '.php')) {
-    require('lib/' . $class . '.php');
+  if (file_exists('lib/' . strtolower($class) . '.php')) {
+    require('lib/' . strtolower($class) . '.php');
   }
 }
 
