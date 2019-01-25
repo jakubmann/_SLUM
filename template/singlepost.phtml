@@ -1,0 +1,9 @@
+<h1><?= $content['title']; ?></h1>
+<h2>
+  <a href='<?='/user/id/' . $content['author']?>'>
+  <?= $content['authorName']; ?>
+  </a>
+</h2>
+<p><?= nl2br($content['body']); ?></p>
+<p><?= $content['post_date'] ?></p>
+<p><?= $content['post_time'] ?></p>

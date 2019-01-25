@@ -1,3 +1,5 @@
-<h1><?= $content['title']; ?></h1>
-<h3><?= '<br><a href=/user/id/' . $content['author'] , '>' . $content['authorName'] .'<a><br>'; ?></h3>
-<p><?= nl2br($content['body']); ?></p>
+<h2><?= $postdata['title']; ?></h2>
+<h3><a href='<?= 'user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a></h3>
+<p><?= nl2br($postdata['body']); ?></p>
+<a href='<?= 'post/id/' . $postdata['id']; ?>'>
+Read More</a>

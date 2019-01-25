@@ -1,9 +1,10 @@
 <?php
 
 class View {
-
-  public function __construct($data) {
+  private $controller;
+  public function __construct($data, $controller) {
     $this->data = $data;
+    $this->controller = $controller;
   }
 
   public function render($layout = NULL, $file) {
@@ -12,6 +13,9 @@ class View {
     if (!is_null($layout)){
       $layout = 'template/' . $layout . '.phtml';
       require $layout;
+    }
+    else {
+      require $filename;
     }
   }
 }

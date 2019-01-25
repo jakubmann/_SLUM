@@ -7,7 +7,7 @@ abstract class Controller {
 
   public function __construct() {
     if (isset($this->data)) {
-      $this->view = new View($this->data);
+      $this->view = new View($this->data, $this);
     }
   }
 

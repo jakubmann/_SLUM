@@ -1,7 +1,7 @@
 <?php
 
 class Posts {
-  
+
   private function trim_text($input, $length, $ellipses = true, $strip_html = true) {
     if ($strip_html) {
         $input = strip_tags($input);
@@ -23,7 +23,7 @@ class Posts {
 
   public function getPosts($postCount) {
     $posts = array();
-    $sql = 'SELECT title, body, id, author
+    $sql = 'SELECT title, body, id, author, post_date
     FROM text
     ORDER BY post_date DESC
     LIMIT :count';
@@ -37,14 +37,14 @@ class Posts {
     $result = $stmt->fetchAll();
     foreach ($result as $row) {
       $body = $this->trim_text($row['body'], 1000);
-      $post = new Post($row['title'], $body, $row['id'], $row['author']);
+      $post = new Post($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
       array_push($posts, $post);
     }
     return $posts;
   }
 
   public function getPost($id) {
-    $sql = 'SELECT title, body, id, author
+    $sql = 'SELECT title, body, id, author, post_date
     FROM text
     WHERE id = :id';
 
@@ -62,7 +62,7 @@ class Posts {
       $result = $result->fetchAll();
 
       foreach ($result as $row) {
-        $post = new Post($row['title'], $row['body'], $row['id'], $row['author']);
+        $post = new Post($row['title'], $row['body'], $row['id'], $row['author'], $row['post_date']);
       }
       return $post;
     }

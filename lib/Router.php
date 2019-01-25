@@ -1,9 +1,11 @@
 <?php
+define('URL', 'localhost/');
+
 function classLoader($class) {
   if (preg_match('/_controller/', $class)) {
     require('controllers/' . $class . '.php');
   }
-  else {
+  else if (file_exists('models/' . $class . '.php')) {
     require('models/' . $class . '.php');
   }
 }
@@ -11,6 +13,25 @@ function classLoader($class) {
 spl_autoload_register('classLoader');
 
 class Router {
+  private static $instance = NULL;
+
+  private function __clone() {
+
+  }
+
+  function __wakeup() {
+      throw new Exception('Serialization not supported.');
+  }
+
+  public static function getInstance()
+  {
+      if(!self::$instance)
+      {
+          self::$instance = new Router();
+      }
+      return self::$instance;
+  }
+
   private function error() {
     $controller = new error_controller();
     exit();
@@ -22,6 +43,11 @@ class Router {
     $url = rtrim($url, '/');
     $url = explode('/', $url);
 
+    $this->route($url);
+
+  }
+
+  public function route($url) {
     //setting variables
     $name = $url[0];
     if (isset($url[1])) {
@@ -59,6 +85,7 @@ class Router {
     }
     else {
       $controller = new home_controller();
+      $controller->index();
     }
   }
 }

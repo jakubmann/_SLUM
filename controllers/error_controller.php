@@ -4,6 +4,6 @@ class error_controller extends Controller {
   public function __construct() {
     $this->data['title'] = 'Error 404';
     parent::__construct();
-    $this->view->render('layout', 'error');
+    $this->view->render(NULL, 'error');
   }
 }
