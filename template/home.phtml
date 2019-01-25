@@ -1,13 +1,16 @@
-<h1>Home</h1>
-<p>This the homepage</p>
-<?php
-  ob_start();
-  $output = '';
-  foreach($posts as $post) {
-    ob_start();
-      $postdata = $post->getcontent();
-      require 'post.phtml';
-    ob_end_flush();
-  }
-  ob_end_flush();
-?>
+<div class='home'>
+    <h1 class='home__title'>Home</h1>
+    <p class='home__desc'>This the homepage</p>
+    <div class='posts'>
+    <?php
+      ob_start();
+      foreach($posts as $post) {
+        ob_start();
+          $postdata = $post->getcontent();
+          require 'post.phtml';
+        ob_end_flush();
+      }
+      ob_end_flush();
+    ?>
+    </div>
+</div>

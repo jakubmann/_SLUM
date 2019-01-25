@@ -1,3 +1,3 @@
 <div class='header'>
-    <h1 class='header__title'><a href='/'>Slum</a></h1>
+    <a class='header__title' href='/'>Slum</a>
 </div>

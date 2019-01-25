@@ -1,0 +1,14 @@
+.header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: black;
+    text-align: center;
+    
+    &__title {
+        font-family: $plex-mono;
+        color: white;
+        font-size: 50px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}

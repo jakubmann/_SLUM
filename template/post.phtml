@@ -1,5 +1,8 @@
-<h2><?= $postdata['title']; ?></h2>
-<h3><a href='<?= 'user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a></h3>
-<p><?= nl2br($postdata['body']); ?></p>
-<a href='<?= 'post/id/' . $postdata['id']; ?>'>
-Read More</a>
+<div class='post'>
+    <h2 class='post__title'><?= $postdata['title']; ?></h2>
+    <a class='post__author' href='<?= 'user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a>
+    <br>
+    <p class='post__body'><?= nl2br($postdata['body']); ?></p>
+    <br>    
+    <a class='post__readmore' href='<?= 'post/id/' . $postdata['id']; ?>'>Read More</a>
+</div>
