@@ -4,6 +4,7 @@ var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var cssnano = require("cssnano");
 var browserSync = require("browser-sync").create();
+var plumber = require("gulp-plumber");
 
 
 function syncBrowser() {
@@ -26,9 +27,10 @@ function style() {
         gulp
             .src("public/scss/**/*.scss")
             .pipe(sass())
-            .on("error", sass.logError)
+            .pipe(plumber())
             .pipe(postcss([autoprefixer(), cssnano()]))
             .pipe(gulp.dest("public/css"))
+            .pipe(browserSync.stream())
     );
 }
 
@@ -36,8 +38,8 @@ function style() {
 exports.style = style;
 
 function watch() {
-    gulp.watch("public/scss/**/*.scss", gulp.parallel(style, reload))
-    gulp.watch("template/**/*.phtml", reload)
+    gulp.watch("public/scss/**/*.scss", style);
+    gulp.watch("template/**/*.phtml", reload);
 }
 
 exports.watch = watch;

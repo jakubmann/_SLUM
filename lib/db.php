@@ -2,6 +2,23 @@
 
 class Db {
   private static $conn;
+  private static $instance = NULL;
+
+  private function __clone() {
+  }
+
+  function __wakeup() {
+      throw new Exception('Serialization not supported.');
+  }
+
+  public static function getInstance()
+  {
+      if(!self::$instance)
+      {
+          self::$instance = new Db();
+      }
+      return self::$instance;
+  }
 
   private static $settings = array(
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -25,8 +42,10 @@ class Db {
   }
 
   public static function query($sql, $parameters = array()) {
-    $stmt = self::$conn->prepare($sql);
-    $stmt->execute($parameters);
-    return $stmt;
+    if (self::$conn) {
+        $stmt = self::$conn->prepare($sql);
+        $stmt->execute($parameters);
+        return $stmt;
+    }
   }
 }

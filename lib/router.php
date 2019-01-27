@@ -76,11 +76,18 @@ class Router {
           else {
             $controller->{$method}();
           }
-
         }
         else {
           $this->error();
         }
+      }
+      else {
+          if (method_exists($controller, 'index')) {
+              $controller->index();
+          }
+          else {
+              $this->error();
+          }
       }
     }
     else {

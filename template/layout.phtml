@@ -2,17 +2,21 @@
 <html>
     <head>
         <title><?= $title; ?></title>
-        <link rel='stylesheet' type='text/css' href='/public/css/main.css'>  
+        <link rel='stylesheet' type='text/css' href='/public/css/main.css'>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans|IBM+Plex+Sans+Condensed|IBM+Plex+Serif" rel="stylesheet">
         <meta charset="UTF-8">
+
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type='text/javascript' src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+        <script type='text/javascript' src="/public/js/main.js"></script>
     </head>
 
     <body>
         <?php require 'template/header.php'; ?>
         <div class='content'>
             <?php require $filename ?>
-        </div> 
+        </div>
         <?php require 'template/footer.php'; ?>
     </body>
 </html>

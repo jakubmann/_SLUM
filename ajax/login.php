@@ -1,0 +1,41 @@
+<?php
+
+include_once('../lib/app.php');
+include_once('../lib/db.php');
+
+session_start();
+
+$app = App::getInstance();
+$db = Db::getInstance();
+$db::connect('127.0.0.1', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+
+if ($_POST) {
+    $input_username = trim($_POST['username']);
+    $input_email = trim($_POST['username']);
+
+    $input_password = trim($_POST['password']);
+    $input_password = md5($input_password);
+
+    try {
+        $result = $db->query('SELECT * FROM users WHERE username = :username OR email = :email',
+        array(
+            ':email' => $input_email,
+            ':username' => $input_username
+        ));
+
+
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        $count = $result->rowCount();
+
+        if ($row['password'] == $input_password) {
+            echo '1'; //success
+            $_SESSION['user_id'] = $row['id'];
+        }
+        else {
+            echo '2'; //error
+        }
+    }
+    catch(PDOException $e) {
+        echo $e->getMessage();
+    }
+}
