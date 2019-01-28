@@ -12,3 +12,53 @@
         font-weight: bold;
     }
 }
+
+.navigation {
+  background-color: white;
+    &__ul {
+      list-style-type: none;
+      padding: 10px;
+      text-align: center;
+      @media screen and (max-width: $phone) {
+        padding: 0px;
+        margin-top: 150px;
+      }
+    }
+    &__item {
+      width: 15%;
+      display: inline-block;
+      padding: 16px;
+      font-family: $plex-sans;
+      border-left: $default_border;
+      border-width: 2px;
+      @media screen and (max-width: $phone) {
+        width: 75%;
+        margin: 0px auto;
+        padding: 12px;
+        border-left: none;
+        position: relative;
+        z-index : 1;
+        &:before {
+          content: "";
+          left: 0;
+          bottom: 0;
+          height: 1px;
+          border-top: 2px solid black;
+          position: absolute;
+          width: 10%;
+          left: 45%;
+        }
+      }
+      &--selected {
+        color: $light-gray;
+      }
+      &--first {
+        border: 0px;
+      }
+    }
+
+    &__link {
+      color: black;
+      text-decoration: none;
+    }
+}

@@ -1,0 +1,16 @@
+.error_page {
+    text-align: center;
+
+    &__title {
+        margin-top: 100px;
+        font-size: 50px;
+        font-family: $plex-mono;
+        font-weight: 800;
+    }
+
+    &__message {
+        line-height: 1.5;
+        margin-top: 100px;
+        font-family: $plex-sans;
+    }
+}

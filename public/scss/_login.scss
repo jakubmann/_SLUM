@@ -2,7 +2,7 @@
     margin-top: 20px;
     text-align: center;
     &__error {
-        color: white;
+        color: $red;
         font-family: $plex-mono;
         font-size: 13px;
         margin-top: 10px;
@@ -50,7 +50,7 @@
         &_register {
             display: inline-block;
             padding-top: 20px;
-            color: white;
+            color: black;
             font-family: $plex-sans;
             text-decoration: none;
             color: black;

@@ -12,9 +12,7 @@ $db::connect('127.0.0.1', 'slum', '5SbtycTh4R7a3nQp', 'slum');
 if ($_POST) {
     $input_username = trim($_POST['username']);
     $input_email = trim($_POST['username']);
-
-    $input_password = trim($_POST['password']);
-    $input_password = md5($input_password);
+    $input_password = hash('SHA512', $_POST['password']);
 
     try {
         $result = $db->query('SELECT * FROM users WHERE username = :username OR email = :email',
@@ -27,7 +25,7 @@ if ($_POST) {
         $row = $result->fetch(PDO::FETCH_ASSOC);
         $count = $result->rowCount();
 
-        if ($row['password'] == $input_password) {
+        if (hash_equals($input_password, $row['password'])) {
             echo '1'; //success
             $_SESSION['user_id'] = $row['id'];
         }

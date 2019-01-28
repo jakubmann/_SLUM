@@ -1,0 +1,66 @@
+.register {
+    margin-top: 20px;
+
+    &__title {
+        margin-top: 50px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-weight: 600;
+        font-size: 50px;
+        letter-spacing: 6px;
+    }
+
+    &-form {
+        text-align: center;
+
+        .alert {
+            font-family: $plex-mono;
+            color: $red;
+
+            &--success {
+                font-family: $plex-mono;
+                color: $green;
+            }
+        }
+
+        .error {
+            font-family: $plex-mono;
+            font-size: 13px;
+            border-color: $red;
+            color: $red;
+        }
+
+        &__text {
+            font-family: $plex-mono;
+            font-weight: 400;
+            margin: 15px 0 0;
+        }
+
+        &__message {
+            font-family: $plex-mono;
+            font-weight: 400;
+        }
+
+        &__input {
+            margin: 0 auto;
+            display: block;
+            padding: 4px 5px;
+            border-radius: 5px;
+            border: $default_border;
+            font-family: $plex-mono;
+            margin-top: 15px;
+            margin-bottom: 3px;
+        }
+
+        &__button {
+            display: block;
+            margin: 0 auto;
+            border: none;
+            padding: 8px 15px;
+            margin-top: 15px;
+            background-color: #dddddd;
+            font-family: $plex-mono;
+            border-radius: 5px;
+        }
+    }
+}

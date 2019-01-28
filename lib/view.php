@@ -15,7 +15,8 @@ class View {
       require $layout;
     }
     else {
-      require $filename;
+        $layout = 'template/layout_none.phtml';
+        require $layout;
     }
   }
 }
