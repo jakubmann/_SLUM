@@ -15,11 +15,13 @@ if ($_POST) {
     $input_password = hash('SHA512', $_POST['password']);
 
     try {
-        $result = $db->query('SELECT * FROM users WHERE username = :username OR email = :email',
+        $result = $db->query(
+            'SELECT * FROM users WHERE username = :username OR email = :email',
         array(
             ':email' => $input_email,
             ':username' => $input_username
-        ));
+        )
+        );
 
 
         $row = $result->fetch(PDO::FETCH_ASSOC);
@@ -28,12 +30,10 @@ if ($_POST) {
         if (hash_equals($input_password, $row['password'])) {
             echo '1'; //success
             $_SESSION['user_id'] = $row['id'];
-        }
-        else {
+        } else {
             echo '2'; //error
         }
-    }
-    catch(PDOException $e) {
+    } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }

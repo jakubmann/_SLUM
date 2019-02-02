@@ -1,17 +1,20 @@
 <?php
 
-abstract class Controller {
+abstract class Controller
+{
     protected $data = array();
     protected $view;
     protected $model;
 
-    public function __construct() {
+    public function __construct()
+    {
         if (isset($this->data)) {
             $this->view = new View($this->data, $this);
         }
     }
 
-    public function redirect($url) {
+    public function redirect($url)
+    {
         header('Location: /' . $url);
         header('Connection: close');
         exit;
