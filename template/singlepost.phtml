@@ -1,9 +1,10 @@
-<h1><?= $content['title']; ?></h1>
-<h2>
-  <a href='<?='/user/id/' . $content['author']?>'>
-  <?= $content['authorName']; ?>
-  </a>
-</h2>
-<p><?= nl2br($content['body']); ?></p>
-<p><?= $content['post_date'] ?></p>
-<p><?= $content['post_time'] ?></p>
+<div class="singlepost">
+    <h1 class="singlepost__title"><?= $content['title']; ?></h1>
+    <a class="singlepost__author" href='<?='/user/id/' . $content['author']?>'>
+        <?= $content['authorName']; ?>
+    </a>
+    </h2>
+    <p class="singlepost__body"><?= nl2br($content['body']); ?></p>
+    <p class="singlepost__date"><?= $content['post_date'] ?></p>
+    <p class="singlepost__time"><?= $content['post_time'] ?></p>
+</div>

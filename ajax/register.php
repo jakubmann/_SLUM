@@ -7,7 +7,7 @@ session_start();
 
 $app = App::getInstance();
 $db = Db::getInstance();
-$db::connect('127.0.0.1', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
 
 if ($_POST) {
   $username = $_POST['username'];

@@ -30,6 +30,9 @@
         text-align: center;
 
         &__title {
+            display: block;
+            color: black;
+            text-decoration: none;
             font-family: $plex-mono;
             font-weight: 200;
             font-size: 25px;

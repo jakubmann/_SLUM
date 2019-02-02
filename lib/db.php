@@ -28,12 +28,17 @@ class Db {
 
   public static function connect($host, $user, $password, $database) {
     if (!isset(self::$conn)) {
-      self::$conn = new PDO (
-        "mysql:host=$host;dbname=$database",
-        $user,
-        $password,
-        self::$settings
-      );
+        try {
+            self::$conn = new PDO (
+                "mysql:host=$host;dbname=$database",
+                $user,
+                $password,
+                self::$settings
+            );
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
     }
   }
 

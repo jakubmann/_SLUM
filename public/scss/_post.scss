@@ -1,0 +1,38 @@
+.singlepost {
+    width: 90%;
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 25px;
+
+    &__title {
+        font-family: $plex-mono;
+        font-size: 25px;
+    }
+
+    &__author {
+        display: block;
+        margin-top: 20px;
+        font-family: $plex-sans;
+        text-decoration: none;
+        color: gray;
+        font-style: italic;
+        font-weight: 100;
+    }
+
+    &__body {
+        display: inline-block;
+        margin: 0px auto;
+        margin-top: 10px;
+        line-height: 1.5;
+        text-align: left;
+        font-family: $plex-serif;
+    }
+
+    &__date {
+        font-family: $plex-mono;
+    }
+
+    &__time {
+        font-family: $plex-mono;
+    }
+}

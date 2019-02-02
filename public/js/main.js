@@ -90,6 +90,9 @@ $('document').ready(function() {
                     $('.login__error').html('<p>Incorrect username or password.</p>');
                 }
                 console.log(data);
+            },
+            error: function(data) {
+                alert(data.statusText);
             }
         });
     }
