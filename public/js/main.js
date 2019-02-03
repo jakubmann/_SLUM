@@ -1,7 +1,62 @@
 var red = '#e55757';
 var green = '#3a9e4c';
 
+
+
+function textAreaAdjust(o) {
+    o.style.height = "1px";
+    o.style.height = (25 + o.scrollHeight) + "px";
+}
+
+
+/********************************
+ *                               *
+ *              AJAX             *
+ *                               *
+ ********************************/
 $('document').ready(function() {
+
+    //text form
+    function submitTextForm() {
+        var data = $('#text-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/text.php',
+            data: data,
+            success: function(data) {
+                console.log(data);
+                if (data == 0) {
+                    $('.text__title').css('border-color', green);
+                    $('.text__title').css('color', green);
+                    $('.text__body').css('border-color', green);
+                    $('.text__body').css('color', green);
+                    $('#error').html('<div class="alert">Posted!</div>');
+                    setTimeout('window.location.href = "/"; ', 1000);
+                }
+                if (data == 3) {
+                    $('#error').html('<div class="alert">You must be logged in!</div>');
+                }
+
+            }
+        })
+    }
+
+    $('#text-form').validate({
+        rules: {
+            title: {
+                required: true
+            },
+            body: {
+                required: true
+            }
+        },
+        messages: {
+            title: 'Please enter a title.',
+            body: 'Please enter text.'
+        },
+        submitHandler: submitTextForm
+    });
+
     //registration
     function submitRegisterForm() {
         var data = $('#register-form').serialize();
@@ -17,7 +72,7 @@ $('document').ready(function() {
                     $('#error').html('<div class="alert">Username already taken!</div>');
                 } else if (data == 'registered') {
                     $('#register-form').html('<div class="alert--success">Registered successfully!</div>');
-                    setTimeout('window.location.href = "index.php"; ', 1000);
+                    setTimeout('window.location.href = "/"; ', 1000);
                 } else {
                     $('#error').html('<div class="alert">' + data + '</div>')
                 }

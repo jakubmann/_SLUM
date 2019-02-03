@@ -1,0 +1,11 @@
+.footer {
+    margin-top: 5%;
+    padding-top: 50px;
+    padding-bottom: 25px;
+
+    &__text {
+        font-family: $plex-mono;
+        text-align: center;
+        font-size: 15px;
+    }
+}

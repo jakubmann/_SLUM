@@ -1,0 +1,29 @@
+.user {
+    width: 90%;
+    margin: 0px auto;
+    text-align: center;
+    margin-top: 25px;
+
+    &__username {
+        font-family: $plex-mono;
+        font-size: 25px;
+    }
+
+    .userinfo {
+        display: inline-block;
+        margin: 0px auto;
+        margin-top: 10px;
+        text-align: left;
+        &__name {
+            font-family: $plex-sans;
+        }
+
+        &__email {
+            font-family: $plex-sans;
+        }
+
+        &__regdate {
+            font-family: $plex-sans;
+        }
+    }
+}

@@ -1,7 +1,11 @@
-<h2><?=$user['username']?></h2>
-<br>
-<?='Name: ' . $user['firstname'] . ' ' . $user['lastname']?>
-<br>
-<?='Email: ' . $user['email']?>
-<br>
-<?='Joined: ' . $user['reg_date']?>
+<div class="user">
+    <p class="user__username"><?=$user['username']?></h2>
+    <br>
+    <div class="userinfo">
+        <p class="userinfo__name"><?='Name: ' . $user['firstname'] . ' ' . $user['lastname']?></p>
+        <br>
+        <p class="userinfo__email"><?='Email: ' . $user['email']?></p>
+        <br>
+        <p class="userinfo__regdate"><?='Joined: ' . $user['reg_date']?></p>
+    </div>
+</div>

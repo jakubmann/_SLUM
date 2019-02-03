@@ -3,10 +3,11 @@
 class View
 {
     private $controller;
-    public function __construct($data, $controller)
+    public function __construct($data, $controller, $model = null)
     {
         $this->data = $data;
         $this->controller = $controller;
+        $this->model = $model;
     }
 
     public function render($layout = null, $file)

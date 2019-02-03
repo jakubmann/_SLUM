@@ -12,5 +12,6 @@ class home_controller extends Controller
     {
         parent::__construct();
         $this->view->render('layout', 'home');
+        $this->view->model = $this->model;
     }
 }

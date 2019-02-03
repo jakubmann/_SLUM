@@ -21,7 +21,7 @@ class Posts
 
         return $trimmed_text;
     }
-
+    
     public function getPosts($postCount)
     {
         $posts = array();
