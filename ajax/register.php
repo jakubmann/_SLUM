@@ -55,13 +55,13 @@ if ($_POST) {
                     $stmt->bindParam(':token', $token);
                     $stmt->bindParam(':email', $email);
                     if ($stmt->execute()) {
-                        $link = "http://www.slumpoetry.cz/login/token/" . $token;
+                        $link = "https://www.slumpoetry.cz/login/token/" . $token;
 
                         $to = $email;
                         $message = "Confirm your email here: " . $link;
                         $subject = 'Your registration at www.slumpoetry.cz';
-                        $headers = 'From: slumpoetry.cz' . "\r\n" .
-                            'Reply-To: jakub.h.mann@gmail.com' . "\r\n" .
+                        $headers = 'From: slum@slumpoetry.cz' . "\r\n" .
+                            'Reply-To: support@slumpoetry.cz' . "\r\n" .
                             'X-Mailer: PHP/' . phpversion();
                         mail($to, $subject, $message, $headers);
 
