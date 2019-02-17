@@ -8,4 +8,15 @@
         <br>
         <p class="userinfo__regdate"><?='Joined: ' . $user['reg_date']?></p>
     </div>
+
+    <?php
+      ob_start();
+      foreach ($posts as $post) {
+          ob_start();
+          $postdata = $post->getContent();
+          require 'post.phtml';
+          ob_end_flush();
+      }
+      ob_end_flush();
+    ?>
 </div>

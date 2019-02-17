@@ -1,6 +1,6 @@
 <div class='post'>
-    <a class='post__title' href='<?= 'post/id/' . $postdata['id']; ?>'><?= $postdata['title']; ?></a>
-    <a class='post__author' href='<?= 'user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a>
+    <a class='post__title' href='<?= '/post/id/' . $postdata['id']; ?>'><?= $postdata['title']; ?></a>
+    <a class='post__author' href='<?= '/user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a>
     <br>
     <p class='post__body'><?= nl2br($postdata['body']); ?></p>
     <br>

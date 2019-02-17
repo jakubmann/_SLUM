@@ -139,10 +139,21 @@ $('document').ready(function() {
                     $('.login__input').css('border-color', green);
                     $('.login__input').css('color', green);
                     setTimeout('window.location.href = "/"; ', 1000);
-                } else {
+                }
+                else if (data == '2') {
                     $('login__error').html(data);
                     $('.login__input').addClass('error');
                     $('.login__error').html('<p>Incorrect username or password.</p>');
+                }
+                else if (data == '3') {
+                    $('login__error').html(data);
+                    $('.login__input').addClass('error');
+                    $('.login__error').html('<p>You must confirm your email.</p>');
+                }
+                else if (data == '4') {
+                    $('login__error').html(data);
+                    $('.login__input').addClass('error');
+                    $('.login__error').html('<p>Incorrect email token.</p>');
                 }
                 console.log(data);
             },

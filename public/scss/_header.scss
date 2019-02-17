@@ -1,6 +1,6 @@
 .header {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     background-color: black;
     text-align: center;
 
@@ -21,7 +21,7 @@
       text-align: center;
       @media screen and (max-width: $phone) {
         padding: 0px;
-        margin-top: 150px;
+        margin-top: 10px;
       }
     }
     &__item {

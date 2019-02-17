@@ -7,7 +7,9 @@ session_start();
 
 $app = App::getInstance();
 $db = Db::getInstance();
-$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+
+//$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 if ($_POST) {
     $username = $_POST['username'];
@@ -20,9 +22,9 @@ if ($_POST) {
     try {
         $result = $db->query(
         'SELECT * FROM users WHERE email = :email',
-    array(
-        ':email' => $email
-    )
+        array(
+            ':email' => $email
+        )
     );
         $count = $result->rowCount();
 
@@ -43,7 +45,30 @@ if ($_POST) {
                 $stmt->bindParam(':reg_date', $reg_date);
 
                 if ($stmt->execute()) {
-                    echo 'registered';
+                    $stmt = $db->getConn()->prepare(
+                        'INSERT INTO confirm(userid, token, email)
+                        VALUES (:userid, :token, :email)'
+                    );
+                    $userid = $db->getConn()->lastInsertId();
+                    $token = hash('sha512', $reg_date . $email);
+                    $stmt->bindParam(':userid', $userid);
+                    $stmt->bindParam(':token', $token);
+                    $stmt->bindParam(':email', $email);
+                    if ($stmt->execute()) {
+                        $link = "http://www.slumpoetry.cz/login/token/" . $token;
+
+                        $to = $email;
+                        $message = "Confirm your email here: " . $link;
+                        $subject = 'Your registration at www.slumpoetry.cz';
+                        $headers = 'From: slumpoetry.cz' . "\r\n" .
+                            'Reply-To: jakub.h.mann@gmail.com' . "\r\n" .
+                            'X-Mailer: PHP/' . phpversion();
+                        mail($to, $subject, $message, $headers);
+
+                        echo 'registered';
+                    } else {
+                        echo 'Query couldn\'t execute!';
+                    }
                 } else {
                     echo 'Query couldn\'t execute!';
                 }

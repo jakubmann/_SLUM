@@ -1,12 +1,14 @@
 <?php
-session_start();
-
 include_once('../lib/app.php');
 include_once('../lib/db.php');
 
+session_start();
+
 $app = App::getInstance();
 $db = Db::getInstance();
-$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+
+//$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 if ($_POST) {
     $title = $_POST['title'];
@@ -29,7 +31,7 @@ if ($_POST) {
                 'INSERT INTO text(author, title, body, post_date)
                 VALUES(:author, :title, :body, :post_date)'
               );
-              
+
               $title = htmlspecialchars($title);
               $body = htmlspecialchars($body);
               $post_date = htmlspecialchars($post_date);

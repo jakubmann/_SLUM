@@ -6,7 +6,7 @@ class home_controller extends Controller
     {
         $this->data['title'] = 'Home';
         $this->model = new Posts();
-        $this->data['posts'] = $this->model->getPosts(3);
+        $this->data['posts'] = $this->model->getPosts();
     }
     public function index()
     {

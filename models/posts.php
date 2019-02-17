@@ -21,22 +21,55 @@ class Posts
 
         return $trimmed_text;
     }
-    
-    public function getPosts($postCount)
+
+    public function getPosts($postCount = null, $user = null)
     {
         $posts = array();
+        if (!is_null($postCount)) {
+            $sql = 'SELECT title, body, id, author, post_date
+            FROM text
+            ORDER BY post_date DESC
+            LIMIT :count';
+
+            $parameters = array(
+              ':count' => $postCount
+            );
+
+            $stmt = Db::query($sql, $parameters);
+        }
+        else {
+            $sql = 'SELECT title, body, id, author, post_date
+            FROM text
+            ORDER BY post_date DESC';
+
+            $stmt = Db::query($sql);
+        }
+
+        $result = $stmt->fetchAll();
+        foreach ($result as $row) {
+            $body = $this->trim_text($row['body'], 1000);
+            $post = new Post($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
+            array_push($posts, $post);
+        }
+        return $posts;
+    }
+
+    public function getUserPosts($userid) {
+        $posts = array();
+
         $sql = 'SELECT title, body, id, author, post_date
-    FROM text
-    ORDER BY post_date DESC
-    LIMIT :count';
+            FROM text
+            WHERE author = :userid
+            ORDER BY post_date DESC';
 
         $parameters = array(
-      ':count' => $postCount
-    );
+          ':userid' => $userid
+        );
 
         $stmt = Db::query($sql, $parameters);
 
         $result = $stmt->fetchAll();
+
         foreach ($result as $row) {
             $body = $this->trim_text($row['body'], 1000);
             $post = new Post($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
