@@ -9,6 +9,6 @@ class register_controller extends Controller
     public function index()
     {
         parent::__construct();
-        $this->view->render(null, 'register');
+        $this->view->render('layout', 'register');
     }
 }

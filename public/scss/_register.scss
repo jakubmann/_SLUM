@@ -16,8 +16,9 @@
         .alert {
             font-family: $plex-mono;
             color: $red;
-
+            margin-top: 20px;
             &--success {
+                margin-top: 20px;
                 font-family: $plex-mono;
                 color: $green;
             }

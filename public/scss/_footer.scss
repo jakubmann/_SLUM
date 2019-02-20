@@ -2,10 +2,17 @@
     margin-top: 5%;
     padding-top: 50px;
     padding-bottom: 25px;
+    @media screen and (max-width: $phone) {
+        margin-top: 1%;
+        padding-top: 5%;
+    }
 
     &__text {
         font-family: $plex-mono;
         text-align: center;
         font-size: 15px;
+        @media screen and (max-width: $phone) {
+            font-size: 12px;
+        }
     }
 }

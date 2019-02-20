@@ -1,4 +1,14 @@
 .submit_text {
+    &__wrapper {
+        border: $default_border;
+        width: 500px;
+        margin: 0 auto;
+        border-radius: 5px;
+        @media (max-width: $phone) {
+            font-size: 20px;
+            width: 90%;
+        }
+    }
     margin-top: 25px;
     text-align: center;
 
@@ -16,11 +26,12 @@
 
     .text {
         &__title {
-            border-radius: 5px;
-            border: $default_border;
+            border: none;
+            border-bottom: 1px grey dashed;
+            border-radius: 0px;
             display: block;
             margin: 0 auto;
-            width: 500px;
+            width: 400px;
             height: 40px;
             text-align: center;
             font-family: $plex-mono;
@@ -28,23 +39,23 @@
             font-size: 25px;
             @media (max-width: $phone) {
                 font-size: 20px;
-                width: 100%;
+                width: 85%;
             }
         }
 
         &__body {
-            border-radius: 5px;
-            border: $default_border;
+            border: none;
             display: block;
             margin: 25px auto 0;
-            width: 475px;
+            width: 400px;
             padding: 15px;
             resize: none;
             font-family: $plex-serif;
             font-weight: 100;
             @media (max-width: $phone) {
+                margin-top: 10px;
                 font-size: 12px;
-                width: 100%;
+                width: 85%;
             }
         }
     }
@@ -58,5 +69,7 @@
         background-color: #dddddd;
         font-family: $plex-mono;
         border-radius: 5px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
     }
 }

@@ -4,9 +4,9 @@ class Post
 {
     private function getAuthorName($id)
     {
-        $result = Db::query('SELECT firstname, lastname FROM users WHERE id = :id', array(':id' => $id));
+        $result = Db::query('SELECT username FROM users WHERE id = :id', array(':id' => $id));
         foreach ($result as $row) {
-            return $row['firstname'] . ' ' . $row['lastname'];
+            return $row['username'];
         }
     }
 

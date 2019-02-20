@@ -6,7 +6,10 @@
 
     &__title {
         font-family: $plex-mono;
-        font-size: 25px;
+        font-size: 35px;
+        @media (max-width: $phone) {
+            font-size: 25px;
+        }
     }
 
     &__author {
@@ -29,10 +32,16 @@
     }
 
     &__date {
+        margin-top: 5%;
+        @media (max-width: $phone) {
+            margin-top: 10%;
+        }
+        font-size: 14px;
         font-family: $plex-mono;
     }
 
     &__time {
+        font-size: 14px;
         font-family: $plex-mono;
     }
 }

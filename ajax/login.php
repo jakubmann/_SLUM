@@ -8,8 +8,8 @@ session_start();
 $app = App::getInstance();
 $db = Db::getInstance();
 
-//$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
-$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
+$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+//$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 if ($_POST) {
     $input_username = trim($_POST['username']);
@@ -32,7 +32,7 @@ if ($_POST) {
         $count = $result->rowCount();
         $userid = $row['id'];
 
-        if (hash_equals($input_password, $row['password'])) {
+        if ($count > 0 && hash_equals($input_password, $row['password'])) {
             if ($row['status'] == "Y") {
                 echo '1'; //success
                 $_SESSION['user_id'] = $row['id'];

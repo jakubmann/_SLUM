@@ -8,8 +8,8 @@ function autoload($class) {
 
 spl_autoload_register('autoload');
 
-//Db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
-Db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
+Db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+//Db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 $app = new App();
 $app->run();

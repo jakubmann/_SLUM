@@ -2,7 +2,8 @@
 		<input class="login__input" type="text" name="username" id="username" placeholder="Username/Email">
 
 		<input class="login__input" type="password" name="password" id="password" placeholder="Password">
-		<input type="hidden" name="token" value="<?=$token?>">
+		
+		<input type="hidden" name="token" value="<?=$_GET['token']?>">
 
 		<button class="login__button_login" type="submit" name="submit">log in</button>
 

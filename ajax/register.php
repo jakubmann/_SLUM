@@ -5,11 +5,12 @@ include_once('../lib/db.php');
 
 session_start();
 
+
 $app = App::getInstance();
 $db = Db::getInstance();
 
-//$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
-$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
+$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+//$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 if ($_POST) {
     $username = $_POST['username'];
@@ -24,8 +25,9 @@ if ($_POST) {
         'SELECT * FROM users WHERE email = :email',
         array(
             ':email' => $email
-        )
-    );
+            )
+        );
+
         $count = $result->rowCount();
 
         if ($count == 0) {
@@ -55,7 +57,7 @@ if ($_POST) {
                     $stmt->bindParam(':token', $token);
                     $stmt->bindParam(':email', $email);
                     if ($stmt->execute()) {
-                        $link = "https://www.slumpoetry.cz/login/token/" . $token;
+                        $link = "https://www.slumpoetry.cz/login?token=" . $token;
 
                         $to = $email;
                         $message = "Confirm your email here: " . $link;

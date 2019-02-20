@@ -11,9 +11,8 @@ class login_controller extends Controller
         parent::__construct();
         $this->view->render('layout', 'login');
     }
-    public function token($value) {
-        $this->data["token"] = $value;
-        parent::__construct();
-        $this->view->render('layout', 'login');
+    public function login()
+    {
+            echo "1";
     }
 }

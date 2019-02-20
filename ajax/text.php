@@ -7,8 +7,8 @@ session_start();
 $app = App::getInstance();
 $db = Db::getInstance();
 
-//$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
-$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
+$db::connect('localhost', 'slum', '5SbtycTh4R7a3nQp', 'slum');
+//$db::connect("md39.wedos.net", "w213391_slum", "ftVhW2Dx", "d213391_slum");
 
 if ($_POST) {
     $title = $_POST['title'];

@@ -71,8 +71,7 @@ $('document').ready(function() {
                 } else if (data == 2) {
                     $('#error').html('<div class="alert">Username already taken!</div>');
                 } else if (data == 'registered') {
-                    $('#register-form').html('<div class="alert--success">Registered successfully!</div>');
-                    setTimeout('window.location.href = "/"; ', 1000);
+                    $('#register-form').html('<div class="alert--success">Check your email inbox!</div>');
                 } else {
                     $('#error').html('<div class="alert">' + data + '</div>')
                 }
@@ -84,7 +83,8 @@ $('document').ready(function() {
         rules: {
             username: {
                 required: true,
-                minlength: 3
+                minlength: 3,
+                maxlength: 20
             },
             firstname: {
                 required: true
@@ -109,7 +109,8 @@ $('document').ready(function() {
         messages: {
             username: {
                 required: 'Please enter a username',
-                minlength: 'Username must have at least 3 characters'
+                minlenght: 'Username must have at least 3 characters',
+                maxlength: 'Username can\'t have more than 20 characters'
             },
             firstname: 'Please enter your first name',
             lastname: 'Please enter your last name',
@@ -138,19 +139,17 @@ $('document').ready(function() {
                 if (data == '1') {
                     $('.login__input').css('border-color', green);
                     $('.login__input').css('color', green);
+                    $('.login__button_login').css('background-color', green);
                     setTimeout('window.location.href = "/"; ', 1000);
-                }
-                else if (data == '2') {
+                } else if (data == '2') {
                     $('login__error').html(data);
                     $('.login__input').addClass('error');
                     $('.login__error').html('<p>Incorrect username or password.</p>');
-                }
-                else if (data == '3') {
+                } else if (data == '3') {
                     $('login__error').html(data);
                     $('.login__input').addClass('error');
                     $('.login__error').html('<p>You must confirm your email.</p>');
-                }
-                else if (data == '4') {
+                } else if (data == '4') {
                     $('login__error').html(data);
                     $('.login__input').addClass('error');
                     $('.login__error').html('<p>Incorrect email token.</p>');
@@ -166,7 +165,7 @@ $('document').ready(function() {
     $('#login-form').validate({
         rules: {
             username: {
-                required: true,
+                required: true
             },
             password: {
                 required: true
