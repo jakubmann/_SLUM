@@ -21,20 +21,22 @@ $('document').ready(function() {
         var data = $('#text-form').serialize();
         $.ajax({
             type: 'POST',
-            url: 'ajax/text.php',
+            url: '/home/submitPost',
             data: data,
             success: function(data) {
                 console.log(data);
-                if (data == 0) {
-                    $('.text__title').css('border-color', green);
+                if (data == '0') {
+                    $('.submit_text__wrapper').css('border-color', green);
                     $('.text__title').css('color', green);
-                    $('.text__body').css('border-color', green);
                     $('.text__body').css('color', green);
                     $('#error').html('<div class="alert">Posted!</div>');
                     setTimeout('window.location.href = "/"; ', 1000);
                 }
-                if (data == 3) {
-                    $('#error').html('<div class="alert">You must be logged in!</div>');
+                else if (data == '1') {
+                    $('#error').html('There already is a post with this text!');
+                }
+                else if (data == '3') {
+                    $('#error').html('You must be logged in!');
                 }
 
             }
@@ -63,7 +65,7 @@ $('document').ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: 'ajax/register.php',
+            url: '/register/register',
             data: data,
             success: function(data) {
                 if (data == 1) {
@@ -133,7 +135,7 @@ $('document').ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/ajax/login.php',
+            url: '/login/login',
             data: data,
             success: function(data) {
                 if (data == '1') {

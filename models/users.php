@@ -20,7 +20,8 @@ class Users
         } else {
             $result = $result->fetchAll();
             foreach ($result as $row) {
-                $user = new User($row['username'], $row['firstname'], $row['lastname'], $row['email'], $row['reg_date'], $row['id']);
+                $user = new User();
+                $user->createUser($row['username'], $row['firstname'], $row['lastname'], $row['email'], $row['reg_date'], $row['id']);
             }
             return $user;
         }

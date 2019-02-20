@@ -10,7 +10,7 @@
 		      echo '<li class="navigation__item"><a class="navigation__link" href="/login">Log in</a>   |   <a class="navigation__link" href="/register">Register</a></li>';
         }
         else {
-            echo '<li class="navigation__item"><a class="navigation__link" href="ajax/logout.php">Log out</a></li>';
+            echo '<li class="navigation__item"><a class="navigation__link" href="/login/logout">Log out</a></li>';
         }
         ?>
 

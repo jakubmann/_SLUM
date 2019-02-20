@@ -61,7 +61,8 @@ class Posts
                 $chars= 500;
             }
             $body = $this->trim_text($row['body'], $chars);
-            $post = new Post($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
+            $post = new Post();
+            $post->createPost($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
             array_push($posts, $post);
         }
         return $posts;
@@ -90,9 +91,9 @@ class Posts
             else {
                 $chars= 500;
             }
-            echo $chars;
             $body = $this->trim_text($row['body'], $chars);
-            $post = new Post($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
+            $post = new Post();
+            $post->createPost($row['title'], $body, $row['id'], $row['author'], $row['post_date']);
             array_push($posts, $post);
         }
         return $posts;
@@ -117,7 +118,8 @@ class Posts
             $result = $result->fetchAll();
 
             foreach ($result as $row) {
-                $post = new Post($row['title'], $row['body'], $row['id'], $row['author'], $row['post_date']);
+                $post = new Post();
+                $post->createPost($row['title'], $row['body'], $row['id'], $row['author'], $row['post_date']);
             }
             return $post;
         }

@@ -18,7 +18,9 @@
         font-size: 13px;
         color: $green;
     }
-    .error {
+
+    #error {
+        margin-bottom: 10px;
         font-family: $plex-mono;
         font-size: 13px;
         color: $red;

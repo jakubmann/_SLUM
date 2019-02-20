@@ -29,7 +29,7 @@ function style() {
             .pipe(sass())
             .pipe(plumber())
             .pipe(postcss([autoprefixer(), cssnano()]))
-            .pipe(gulp.dest("public/css"))
+            .pipe(gulp.dest("css"))
             .pipe(browserSync.stream())
     );
 }
