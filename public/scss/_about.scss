@@ -1,0 +1,116 @@
+.about {
+    max-width: 70%;
+    margin: 0 auto;
+    @media (max-width: $phone) {
+        max-width: 90%;
+    }
+
+
+
+    &__title {
+        margin-top: 40px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-weight: 600;
+        font-size: 50px;
+        letter-spacing: 6px;
+        padding-bottom: 1%;
+        @media (max-width: $phone) {
+            font-size: 30px;
+        }
+    }
+
+    &__heading {
+        padding-bottom: 1%;
+        margin-top: 40px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-weight: 500;
+        font-size: 40px;
+        letter-spacing: 6px;
+        @media (max-width: $phone) {
+            font-size: 20px;
+            letter-spacing: 4px;
+        }
+        &--small {
+            padding-bottom: 1%;
+            margin-top: 40px;
+            text-align: center;
+            font-family: $plex-sans;
+            font-weight: 500;
+            font-size: 30px;
+            letter-spacing: 6px;
+            @media (max-width: $phone) {
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    &__paragraph {
+        font-family: $plex-sans;
+        line-height: 1.5;
+    }
+
+    .submission-form {
+        display: block;
+        text-align: center;
+        &__subject {
+            margin: 0 auto;
+            padding: 7px 10px;
+            border: $default_border;
+            border-radius: 5px;
+            display: block;
+            width: 400px;
+            font-family: $plex-mono;
+            font-weight: 100;
+            font-size: 15px;
+            margin-top: 10px;
+            @media (max-width: $phone) {
+                font-size: 12px;
+                width: 85%;
+            }
+        }
+        &__description {
+            margin: 0 auto;
+            padding: 7px 10px;
+            resize: none;
+            border: $default_border;
+            border-radius: 5px;
+            margin-top: 1%;
+            display: block;
+            width: 400px;
+            font-family: $plex-mono;
+            font-weight: 100;
+            font-size: 15px;
+            margin-top: 10px;
+            @media (max-width: $phone) {
+                font-size: 12px;
+                width: 85%;
+            }
+        }
+
+        &__submit {
+            margin: 0px auto;
+            display: block;
+            border: none;
+            padding: 8px 15px;
+            margin-top: 15px;
+            background-color: #dddddd;
+            font-family: $plex-mono;
+            border-radius: 5px;
+        }
+        &__message {
+            margin-bottom: 10px;
+            font-family: $plex-mono;
+            font-size: 13px;
+            color: $green;
+        }
+    }
+
+    .error {
+        font-family: $plex-mono;
+        border-color: $red;
+        color: $red;
+    }
+}

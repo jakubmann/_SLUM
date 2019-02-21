@@ -1,0 +1,29 @@
+.submissions {
+    font-family: $plex-mono;
+    padding: 2%;
+    &__table {
+        border-collapse: separate;
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+    &__cell {
+        padding: 10px;
+        border: $default_border;
+        border-bottom: none;
+    }
+
+    &__header {
+        padding: 10px;
+        border: $default_border;
+        border-bottom: 2px solid black;
+        font-size: 25px;
+    }
+
+    &__delete {
+        display: block;
+        width: 20px;
+        float: right;
+        margin-left: 20px;
+    }
+}

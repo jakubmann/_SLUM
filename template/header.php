@@ -13,6 +13,6 @@
             echo '<li class="navigation__item"><a class="navigation__link" href="/login/logout">Log out</a></li>';
         }
         ?>
-
+        <li class="navigation__item navigation__item"><a class="navigation__link" href="/about">About</a></li>
 	</ul>
 </div>

@@ -1,0 +1,20 @@
+<div class='submissions'>
+        <table class='submissions__table'>
+            <tr class='submissions__row'>
+                <th class='submissions__header'>
+                    Subject
+                </th>
+                <th class='submissions__header'>
+                    Description
+                </th>
+                <th class='submissions__header'>
+                    Status
+                </th>
+            </tr>
+            <?php
+            foreach($submissions as $submission) {
+                $submission->render();
+            }
+            ?>
+        </table>
+</div>

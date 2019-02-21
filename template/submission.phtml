@@ -1,0 +1,12 @@
+<tr class='submissions__row'>
+    <td class='submissions__cell'>
+        <?=$submission['subject']?>
+        <img class="submissions__delete" src="/img/bin.png" rel='<?=$submission['id']?>'>
+    </td>
+    <td class='submissions__cell'>
+        <?=$submission['description']?>
+    </td>
+    <td class='submissions__cell submissions__resolve' rel='<?=$submission['id']?>'>
+        <?=$submission['status']?>
+    </td>
+</tr>

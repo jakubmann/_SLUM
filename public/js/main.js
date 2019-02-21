@@ -51,8 +51,6 @@ $('document').ready(function() {
         console.log('page: ' + page);
         console.log('postCount: ' + postCount);
 
-
-
         if (page <= pageCount) {
             if (page == pageCount) {
                 $('.posts__button--next').hide();
@@ -68,6 +66,60 @@ $('document').ready(function() {
                 $('.posts').fadeIn(500);
             });
             $('.pagenumber').html(page + "/" + pageCount);
+        }
+    });
+
+    $(".submissions__resolve").each(function(i, obj) {
+        if ($(this).html() == 0) {
+            $(this).css('background-color', red);
+            $(this).css('color', red);
+        }
+        else {
+            $(this).css('background-color', green);
+            $(this).css('color', green);
+        }
+    });
+
+    $(".submissions__resolve").click(function() {
+        var outcome = $(this).html();
+        var id = $(this).attr('rel');
+
+        if (outcome == 0) {
+            outcome = 1;
+        }
+        else if (outcome == 1) {
+            outcome = 0;
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: '/admin/resolve',
+            data: ({"id":id, "outcome":outcome}),
+            success: function(data) {
+                console.log(data);
+                if (data == '1') {
+                    setTimeout('window.location.href = "/admin/submissions"; ', 0);
+                }
+            },
+            error: function(data) {
+            }
+        });
+    });
+
+    $(".submissions__delete").click(function() {
+        var del = true;
+        var id = $(this).attr('rel');
+        if (window.confirm("Are you sure?")) {
+            $.post('/admin/delete', {
+                id: id
+            });
+        }
+        else {
+            var del = false;
+        }
+        console.log(del);
+        if (del) {
+            $(this).parent().parent().fadeOut('slow');
         }
     });
 
@@ -229,5 +281,54 @@ $('document').ready(function() {
             username: ''
         },
         submitHandler: submitLoginForm
+    });
+
+    //submission
+    function submitSubmissionForm() {
+        var data = $('#submission-form').serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: '/about/submit',
+            data: data,
+            success: function(data) {
+                if (data == "1") {
+                    $(".submission-form__subject").css("border-color", green);
+                    $(".submission-form__subject").css("color", green);
+                    $(".submission-form__description").css("border-color", green);
+                    $(".submission-form__description").css("color", green);
+                    $(".submission-form__submit").css("background-color", green);
+                    $(".submission-form__message").html("Your submission will be considered");
+                }
+                else if (data == "2") {
+                    $(".submission-form__subject").css("border-color", red);
+                    $(".submission-form__subject").css("color", red);
+                    $(".submission-form__description").css("border-color", red);
+                    $(".submission-form__description").css("color", red);
+                    $(".submission-form__submit").css("background-color", red);
+                    $(".submission-form__message").html("Something went wrong.");
+                    $(".submission-form__message").css("color", red);
+                }
+            },
+            error: function(data) {
+                alert(data.statusText);
+            }
+        });
+    }
+
+    $('#submission-form').validate({
+        rules: {
+            subject: {
+                required: true
+            },
+            description: {
+                required: true
+            }
+        },
+        messages: {
+            subject: 'You must enter the subject.',
+            description: 'You must enter the description.'
+        },
+        submitHandler: submitSubmissionForm
     });
 });
