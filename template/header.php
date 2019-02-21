@@ -1,5 +1,5 @@
 <div class='header'>
-    <a class='header__title' href='/'>Slum</a>
+    <a href="/"><img class='header__title' src="/img/logo.png" alt="SLUM"></a>
 </div>
 
 <div class="navigation">

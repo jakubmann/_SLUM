@@ -2,11 +2,17 @@
     width: 90%;
     margin: 0px auto;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 2%;
 
     &__username {
+        text-align: center;
         font-family: $plex-mono;
-        font-size: 25px;
+        font-weight: 400;
+        font-size: 50px;
+        letter-spacing: 2px;
+        @media (max-width: $phone) {
+            font-size: 30px;
+        }
     }
 
     .userinfo {
@@ -27,12 +33,32 @@
         }
     }
 
+    .posts {
+        &__heading {
+            margin-top: 5%;
+            text-align: center;
+            font-family: $plex-sans;
+            font-weight: 600;
+            font-size: 40px;
+            letter-spacing: 6px;
+            @media (max-width: $phone) {
+                font-size: 30px;
+            }
+        }
+    }
+
     .post {
+        width: 50%;
+        margin: 0 auto;
         line-height: 1.5;
         margin-top: 40px;
         margin-bottom: 10px;
         border-bottom: $default_border;
         text-align: center;
+        
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
 
         &__title {
             display: block;

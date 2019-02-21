@@ -2,8 +2,7 @@
     max-width: 70%;
     margin: 0 auto;
     @media (max-width: $phone) {
-        width: 90%;
-        margin: 25px auto 0;
+        max-width: 90%;
     }
 
     &__title {
@@ -13,6 +12,7 @@
         font-weight: 600;
         font-size: 50px;
         letter-spacing: 6px;
+        padding-bottom: 1%;
         @media (max-width: $phone) {
             font-size: 30px;
         }
@@ -22,14 +22,73 @@
         font-family: $plex-sans;
     }
 
-    .post {
-        width: 75%;
+    .posts {
         margin: 0px auto;
-        line-height: 1.5;
-        margin-top: 40px;
-        margin-bottom: 10px;
-        border-bottom: $default_border;
+        &__button {
+            text-align: center;
+            margin: 0px auto;
+            margin-bottom: 100px;
+            width: 25%;
+            @media screen and (max-width: $phone) {
+                width: 90%;
+            }
+            &--next {
+                float: right;
+                display: inline-block;
+                margin: 0 auto;
+                border: none;
+                padding: 8px 15px;
+                margin-top: 15px;
+                background-color: $gray;
+                font-family: $plex-mono;
+                border-radius: 5px;
+                @media screen and (max-width: $phone) {
+                    padding: 4px 10px;
+                    width: 30%;
+                    font-size:10px;
+                }
+            }
+            &--previous {
+                float: left;
+                display: inline-block;
+                margin: 0 auto;
+                border: none;
+                padding: 8px 15px;
+                margin-top: 15px;
+                color: white;
+                background-color: black;
+                font-family: $plex-mono;
+                border-radius: 5px;
+                @media screen and (max-width: $phone) {
+                    padding: 4px 10px;
+                    width: 30%;
+                    font-size:10px
+                }
+            }
+        }
+    }
+
+    .pagenumber {
         text-align: center;
+        font-family: $plex-sans;
+        letter-spacing: 5px;
+        @media screen and (max-width: $phone) {
+            font-size: 11px;
+        }
+    }
+
+    .post {
+        width: 50%;
+        margin: 0 auto;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        text-align: center;
+        padding: 25px 10px 30px 10px;
+        border-bottom: $default_border;
+        @media screen and (max-width: $phone) {
+            width: 90%;
+        }
+
         &__title {
             display: block;
             color: black;
@@ -43,7 +102,7 @@
         }
 
         &__author {
-            color: gray;
+            color: grey;
             text-decoration: none;
             font-family: $plex-mono;
             font-weight: 100;
@@ -93,6 +152,49 @@
             font-family: $plex-mono;
             font-weight: 100;
             border-radius: 5px;
+        }
+    }
+
+    .topthree {
+        &__list {
+            font-family: $plex-mono;
+            text-align: center;
+            margin-top: 2%;
+            line-height: 200%;
+        }
+        &__user {
+            color: black;
+            text-decoration: none;
+            font-size: 20px;
+            @media (max-width: $phone) {
+                font-size: 12px;
+            }
+        }
+    }
+    &__heading {
+        padding-bottom: 1%;
+        margin-top: 40px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-weight: 500;
+        font-size: 40px;
+        letter-spacing: 6px;
+        @media (max-width: $phone) {
+            font-size: 20px;
+            letter-spacing: 4px;
+        }
+        &--small {
+            padding-bottom: 1%;
+            margin-top: 40px;
+            text-align: center;
+            font-family: $plex-sans;
+            font-weight: 500;
+            font-size: 30px;
+            letter-spacing: 6px;
+            @media (max-width: $phone) {
+                font-size: 15px;
+                letter-spacing: 2px;
+            }
         }
     }
 }

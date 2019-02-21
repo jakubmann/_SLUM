@@ -5,16 +5,27 @@
         require 'submit.phtml';
     }
     ?>
+    <h2 class='home__heading' id='posts'>Most recent posts</h2>
     <div class='posts'>
     <?php
-      ob_start();
-      foreach ($posts as $post) {
-          ob_start();
-          $postdata = $post->getcontent();
-          require 'post.phtml';
-          ob_end_flush();
-      }
-      ob_end_flush();
+    ob_start();
+    foreach ($posts as $post) {
+        $post->render();
+    }
+    ob_end_flush();
     ?>
+    </div>
+    <p class="pagenumber"></p>
+    <div class='posts__button'>
+        <button class='posts__button--previous' style='display: none;'>Previous</button>
+        <button class='posts__button--next'>Next</button>
+    </div>
+    <div class='topthree'>
+        <h2 class='home__heading'>Participation awards:</h2>
+        <ul class='topthree__list'>
+            <?php
+            $this->controller->bestUsers();
+            ?>
+        </ul>
     </div>
 </div>

@@ -29,20 +29,45 @@ class Posts
         return $trimmed_text;
     }
 
-    public function getPosts($postCount = null, $user = null)
+    public function getPages($postCount)
+    {
+        $sql = "SELECT COUNT(*) FROM text";
+        $stmt = Db::getConn()->prepare($sql);
+        if ($stmt->execute()) {
+            $result = $stmt->fetchAll();
+            return ceil($result[0][0] / $postCount);
+        }
+    }
+
+    public function getPosts($postCount = null, $previousCount = null)
     {
         $posts = array();
         if (!is_null($postCount)) {
-            $sql = 'SELECT title, body, id, author, post_date
-            FROM text
-            ORDER BY post_date DESC
-            LIMIT :count';
+            if (!is_null($previousCount)) {
+               $sql = 'SELECT title, body, id, author, post_date
+               FROM text
+               ORDER BY post_date DESC
+               LIMIT :previous, :count';
 
-            $parameters = array(
-              ':count' => $postCount
-            );
+               $parameters = array(
+                   ':previous' => $previousCount,
+                   ':count' => $postCount
+               );
 
-            $stmt = Db::query($sql, $parameters);
+               $stmt = Db::query($sql, $parameters);
+            }
+            else {
+                $sql = 'SELECT title, body, id, author, post_date
+                FROM text
+                ORDER BY post_date DESC
+                LIMIT :count';
+
+                $parameters = array(
+                  ':count' => $postCount
+                );
+
+                $stmt = Db::query($sql, $parameters);
+            }
         }
         else {
             $sql = 'SELECT title, body, id, author, post_date
@@ -51,6 +76,7 @@ class Posts
 
             $stmt = Db::query($sql);
         }
+
 
         $result = $stmt->fetchAll();
         foreach ($result as $row) {
@@ -106,8 +132,8 @@ class Posts
     WHERE id = :id';
 
         $parameters = array(
-      ':id' => $id
-    );
+            ':id' => $id
+        );
 
         $result = Db::query($sql, $parameters);
         if ($result->rowCount() == 0) {

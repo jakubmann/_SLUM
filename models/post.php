@@ -2,7 +2,7 @@
 
 class Post
 {
-    private function getAuthorName($id)
+    public function getAuthorName($id)
     {
         $result = Db::query('SELECT username FROM users WHERE id = :id', array(':id' => $id));
         foreach ($result as $row) {
@@ -31,14 +31,14 @@ class Post
     public function getContent()
     {
         return array(
-      'title' => $this->title,
-      'body' => $this->body,
-      'id' => $this->id,
-      'author' => $this->author,
-      'authorName' => $this->authorName,
-      'post_date'=> $this->formatTime($this->post_date)['date'],
-      'post_time'=> $this->formatTime($this->post_date)['time']
-    );
+            'title' => $this->title,
+            'body' => $this->body,
+            'id' => $this->id,
+            'author' => $this->author,
+            'authorName' => $this->authorName,
+            'post_date'=> $this->formatTime($this->post_date)['date'],
+            'post_time'=> $this->formatTime($this->post_date)['time']
+        );
     }
 
     public function submit($title, $body, $post_date)
@@ -77,5 +77,11 @@ class Post
         } else {
             echo '1'; //plagiature
         }
+    }
+
+    public function render()
+    {
+        $postdata = $this->getcontent();
+        require 'template/post.phtml';
     }
 }

@@ -5,6 +5,7 @@ class login_controller extends Controller
     public function __construct()
     {
         $this->data['title'] = 'Login';
+        $this->user = new User();
     }
 
     public function index()
@@ -15,7 +16,6 @@ class login_controller extends Controller
 
     public function login()
     {
-        $user = new User();
         if ($_POST) {
                 $username = trim($_POST['username']);
                 $password = $_POST['password'];
@@ -24,11 +24,10 @@ class login_controller extends Controller
                 } else {
                     $token = null;
                 }
-                $user->login($username, $password, $token);
+                $this->user->login($username, $password, $token);
         }
     }
     public function logout() {
-        $user = new User();
-        $user->logout();
+        $this->user->logout();
     }
 }

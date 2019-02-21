@@ -1,15 +1,20 @@
 .header {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 3%;
+    padding-bottom: 3%;
     background-color: black;
-    text-align: center;
+
+    @media screen and (max-width: $phone) {
+        padding-top: 7%;
+        padding-bottom: 7%;
+    }
 
     &__title {
-        font-family: $plex-mono;
-        color: white;
-        font-size: 50px;
-        text-decoration: none;
-        font-weight: bold;
+        display: block;
+        margin: 0px auto;
+        height: 75px;
+        @media screen and (max-width: $phone) {
+            height: 40px;
+        }
     }
 }
 

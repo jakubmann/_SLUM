@@ -43,6 +43,9 @@
         }
 
         &__input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
             margin: 0 auto;
             display: block;
             padding: 4px 5px;
