@@ -30,36 +30,24 @@ class Users
     public function getUsersByPosts()
     {
         $post = new Post();
-        $sql = 'SELECT author, post_date
-                FROM text
-                WHERE post_date > :now';
+        $sql = 'SELECT username, id
+                FROM users
+                WHERE id IN (SELECT author FROM text)
+                ORDER BY username ASC';
         $stmt = Db::getConn()->prepare($sql);
-
-        $twoweeks = (date("Y-m-d H:i:s", strtotime('-1month')));
-
-        $stmt->bindParam(':now', $twoweeks);
-
 
         if ($stmt->execute()) {
             $result = $stmt->fetchAll();
             $authors = array();
             foreach ($result as $row)
             {
-                array_push($authors, $row['author']);
+                $authors[$row['username']] = $row['id'];
             }
-            $best = array_count_values($authors);
-            arsort($best);
-            $i = 0;
-            foreach ($best as $user => $count)
+            foreach ($authors as $author => $id)
             {
-                $i++;
-                $username = $post->getAuthorName($user);
-                $userid = $user;
+                $username = $author;
+                $userid = $id;
                 require 'template/top_three.phtml';
-                if ($i >= 3)
-                {
-                    break;
-                }
             }
         }
     }

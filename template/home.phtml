@@ -1,6 +1,7 @@
 <div class='home'>
     <h1 class='home__title'>Home</h1>
     <?php
+    require 'search.phtml';
     if (isset($_SESSION['user_id'])) {
         require 'submit.phtml';
     }

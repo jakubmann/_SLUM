@@ -331,4 +331,21 @@ $('document').ready(function() {
         },
         submitHandler: submitSubmissionForm
     });
+
+    function submitSearchForm() {
+        var data = $('#search-form').serialize();
+        alert(data);
+    }
+
+    $('#search-form').validate({
+        rules: {
+            search: {
+                required: true
+            }
+        },
+        messages: {
+            search: ""
+        },
+        submitHandler: submitSearchForm
+    });
 });

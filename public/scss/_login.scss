@@ -29,21 +29,9 @@
             background-color: $gray;
             font-family: $plex-mono;
             border-radius: 5px;
-
+            cursor: pointer;
             &:hover {
                 background-color: $red;
-            }
-        }
-
-        &_logout {
-            border: none;
-            padding: 8px 15px;
-            background-color: $red;
-            font-family: $plex-mono;
-            border-radius: 5px;
-
-            &:hover {
-                background-color: $gray;
             }
         }
 

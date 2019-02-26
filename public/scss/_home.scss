@@ -33,6 +33,7 @@
                 width: 90%;
             }
             &--next {
+                cursor: pointer;
                 float: right;
                 display: inline-block;
                 margin: 0 auto;
@@ -49,6 +50,7 @@
                 }
             }
             &--previous {
+                cursor: pointer;
                 float: left;
                 display: inline-block;
                 margin: 0 auto;
@@ -194,6 +196,38 @@
             @media (max-width: $phone) {
                 font-size: 15px;
                 letter-spacing: 2px;
+            }
+        }
+    }
+
+    .search {
+        text-align: center;
+        &__wrapper {
+            display: inline-block;
+            border: $default_border;
+            border-radius: 12px;
+            padding: 1px 5px;
+        }
+
+        .search-form {
+            &__search {
+                float: left;
+                font-family: $plex-sans;
+                height: 20px;
+                border: none;
+                padding: 2px 5px;
+            }
+
+            &__submit {
+                cursor: pointer;
+                float: left;
+                margin-left: 2px;
+                background: none;
+                border: none;
+                width: 20px;
+                height: 20px;
+                background:url(img/search.png) no-repeat 0px 0px;
+                background-size: 20px 20px;
             }
         }
     }
