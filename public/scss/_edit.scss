@@ -1,0 +1,140 @@
+.edit {
+    &__title {
+        margin-top: 40px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-weight: 600;
+        font-size: 50px;
+        letter-spacing: 6px;
+        padding-bottom: 1%;
+        @media (max-width: $phone) {
+            font-size: 30px;
+        }
+    }
+
+    &__delete {
+        display: block;
+        margin: 0px auto;
+        width: 40px;
+        margin-top: 20px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .deleted {
+        color: $red;
+        margin-top: 40px;
+        text-align: center;
+        font-family: $plex-sans;
+        font-size: 25px;
+        letter-spacing: 3px;
+        padding-bottom: 1%;
+        @media (max-width: $phone) {
+            font-size: 30px;
+        }
+    }
+}
+
+.edit_text {
+    &__wrapper {
+        border: $default_border;
+        width: 500px;
+        margin: 0 auto;
+        border-radius: 5px;
+        @media (max-width: $phone) {
+            font-size: 20px;
+            width: 90%;
+        }
+    }
+    margin-top: 25px;
+    text-align: center;
+
+    .alert {
+        margin-bottom: 10px;
+        font-family: $plex-mono;
+        font-size: 13px;
+        color: $green;
+    }
+
+    .error {
+        margin-bottom: 10px;
+        font-family: $plex-mono;
+        font-size: 13px;
+        color: $red;
+    }
+
+    .text {
+        &__title {
+            border: none;
+            border-bottom: 1px grey dashed;
+            border-radius: 0px;
+            display: block;
+            margin: 0 auto;
+            width: 400px;
+            height: 40px;
+            text-align: center;
+            font-family: $plex-mono;
+            font-weight: 100;
+            font-size: 25px;
+            @media (max-width: $phone) {
+                font-size: 20px;
+                width: 85%;
+            }
+        }
+
+        &__body {
+
+            ::-webkit-scrollbar {
+              width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #f1f1f1;
+              border-radius: 10px;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #888;
+              border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #555;
+            }
+
+
+            border: none;
+            display: block;
+            margin: 25px auto 0;
+            width: 400px;
+            padding: 15px;
+            resize: none;
+            overflow-y: scroll;
+            font-family: $plex-serif;
+            font-weight: 100;
+            @media (max-width: $phone) {
+                margin-top: 10px;
+                font-size: 12px;
+                width: 85%;
+            }
+        }
+    }
+
+    .submit_button {
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        border: none;
+        padding: 8px 15px;
+        margin-top: 15px;
+        background-color: #dddddd;
+        font-family: $plex-mono;
+        border-radius: 5px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+}

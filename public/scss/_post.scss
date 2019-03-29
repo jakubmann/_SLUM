@@ -8,7 +8,7 @@
         font-family: $plex-mono;
         font-size: 35px;
         @media (max-width: $phone) {
-            font-size: 25px;
+            font-size: 20px;
         }
     }
 
@@ -29,6 +29,9 @@
         line-height: 1.5;
         text-align: left;
         font-family: $plex-serif;
+        @media (max-width: $phone) {
+            font-size: 10px;
+        }
     }
 
     &__date {
@@ -43,5 +46,11 @@
     &__time {
         font-size: 14px;
         font-family: $plex-mono;
+    }
+    &__edit {
+        display: block;
+        margin: 0 auto;
+        width: 25px;
+        margin-top: 5px;
     }
 }

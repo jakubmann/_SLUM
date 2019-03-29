@@ -1,10 +1,18 @@
 <div class="singlepost">
-    <h1 class="singlepost__title"><?= $content['title']; ?></h1>
-    <a class="singlepost__author" href='<?='/user/id/' . $content['author']?>'>
-        <?= $content['authorName']; ?>
-    </a>
-    </h2>
-    <p class="singlepost__body"><?= nl2br($content['body']); ?></p>
+    <h1 class="singlepost__title"><?= $content['title'] ?></h1>
+    <?php
+    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $content['author']) {
+        echo '<a href="/post/edit/' . $content['id'] . '"><img class="singlepost__edit" src="/img/pencil.png"></a>';
+    }
+    else {
+        echo "<a class='singlepost__author' href='/user/id/" . $content['author'] .  "'>" . $content['authorName'] . "</a>";
+    }
+    ?>
+
+
+    <pre class="singlepost__body"><?= $content['body'] ?></pre>
+
     <p class="singlepost__date"><?= $content['post_date'] ?></p>
     <p class="singlepost__time"><?= $content['post_time'] ?></p>
+
 </div>

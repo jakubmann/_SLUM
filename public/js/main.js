@@ -20,6 +20,38 @@ $('document').ready(function() {
     var postDisplay = 3;
     var page = 1;
 
+    $('.edit__delete').click(function(){
+        var id = $(this).attr('rel');
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: ({id: id}),
+            url: '/post/delete',
+            success: function(data) {
+                $(".edit").html("<h1 class='deleted'>The post was deleted.</h1>");
+            }
+        });
+    });
+
+    $(".home .posts").load("/home/posts", {
+        postCount: 3,
+        previousCount: postCount
+    });
+
+    $.post('/post/getTitle', {
+        id: $('.edit-form').attr('rel')
+    }, function(data) {
+        $(".edit-form .text__title").val(data);
+    });
+
+    $.post('/post/getBody', {
+        id: $('.edit-form').attr('rel')
+    }, function(data) {
+        $(".edit-form .text__body").val(data);
+    });
+
+
+
     $.post('/home/pageNumber', {
         postCount: postDisplay
     }, function(data) {
@@ -138,11 +170,14 @@ $('document').ready(function() {
                     $('#error').html('<div class="alert">Posted!</div>');
                     setTimeout('window.location.href = "/"; ', 1000);
                 } else if (data == '1') {
-                    $('#error').html('There already is a post with this text!');
+                    $('#error').html('<div class="error">There already is a post with this text!</div>');
                 } else if (data == '3') {
-                    $('#error').html('You must be logged in!');
+                    $('#error').html('<div class="error">You must be logged in!</div>');
                 }
 
+            },
+            error: function(data) {
+                console.log(data);
             }
         });
     }
@@ -161,6 +196,50 @@ $('document').ready(function() {
             body: 'Please enter text.'
         },
         submitHandler: submitTextForm
+    });
+
+    //Edit Text
+    function submitEditForm() {
+        var data = $('#edit-form').serialize();
+        $.ajax({
+            type: 'POST',
+            url: '/post/changeContent',
+            data: data,
+            success: function(data) {
+                console.log(data)
+                if (data == '0') {
+                    $('.submit_text__wrapper').css('border-color', green);
+                    $('.text__title').css('color', green);
+                    $('.text__body').css('color', green);
+                    $('#error').html('<div class="alert">Edited!</div>');
+                    setTimeout('window.location.href = "/"; ', 1000);
+                } else if (data == '1') {
+                    $('#error').html('<div class="error">There already is a post with this text!</div>');
+                } else if (data == '3') {
+                    $('#error').html('<div class="error">You must be logged in!</div>');
+                }
+
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+
+    $('#edit-form').validate({
+        rules: {
+            title: {
+                required: true
+            },
+            body: {
+                required: true
+            }
+        },
+        messages: {
+            title: 'Please enter a title.',
+            body: 'Please enter text.'
+        },
+        submitHandler: submitEditForm
     });
 
     //registration

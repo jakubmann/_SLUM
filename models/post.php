@@ -2,6 +2,26 @@
 
 class Post
 {
+    private function trim_text($input, $length, $ellipses = true, $strip_html = true)
+    {
+        if ($strip_html) {
+            $input = strip_tags($input);
+        }
+
+        if (strlen($input) <= $length) {
+            return $input;
+        }
+
+        $last_space = strrpos(substr($input, 0, $length), ' ');
+        $trimmed_text = substr($input, 0, $last_space);
+
+        if ($ellipses) {
+            $trimmed_text .= '...';
+        }
+
+        return $trimmed_text;
+    }
+
     public function getAuthorName($id)
     {
         $result = Db::query('SELECT username FROM users WHERE id = :id', array(':id' => $id));
@@ -63,6 +83,7 @@ class Post
                 $post_date = htmlspecialchars($post_date);
 
                 $stmt->bindParam(':author', $_SESSION['user_id']);
+
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':body', $body);
                 $stmt->bindParam(':post_date', $post_date);
@@ -79,9 +100,46 @@ class Post
         }
     }
 
-    public function render()
+    public function render($isMobile)
     {
         $postdata = $this->getcontent();
+        if ($isMobile) {
+            $chars = 500;
+        }
+        else {
+            $chars = 1000;
+        }
+        if (strlen($postdata['body']) > $chars) {
+            $postdata['body'] = $this->trim_text($postdata ['body'], $chars);
+            $postdata['readmore'] = true;
+        }
+        else {
+            $postdata['readmore'] = false;
+        }
         require 'template/post.phtml';
+    }
+
+    public function edit($id, $title, $body) {
+        $stmt = Db::getConn()->prepare(
+            'UPDATE text SET title = :title, body=:body WHERE id=:id'
+        );
+
+        $title = htmlspecialchars($title);
+        $body = htmlspecialchars($body);
+
+        if ($stmt->execute(array(':title' => $title, ':body' => $body, ':id' => $id))) {
+            echo '0';
+        }
+    }
+
+    public function delete($id) {
+        $stmt = Db::getConn()->prepare(
+            'DELETE FROM text WHERE id = :id'
+        );
+
+        if ($stmt->execute(array(':id' => $id))) {
+            echo '0';
+        }
+
     }
 }

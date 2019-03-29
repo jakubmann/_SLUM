@@ -21,16 +21,18 @@
     }
 
     &__heading {
+        line-height: 3;
         padding-bottom: 1%;
         margin-top: 40px;
         text-align: center;
         font-family: $plex-sans;
-        font-weight: 500;
+        font-weight: normal;
         font-size: 40px;
-        letter-spacing: 6px;
+        letter-spacing: 5px;
         @media (max-width: $phone) {
             font-size: 20px;
-            letter-spacing: 4px;
+            letter-spacing: 2px;
+            line-height: 1.5;
         }
         &--small {
             padding-bottom: 1%;
@@ -50,6 +52,20 @@
     &__paragraph {
         font-family: $plex-sans;
         line-height: 1.5;
+        width: 80%;
+        margin: 0px auto;
+        &--strong {
+            font-weight: 600;
+            text-align: center;
+            line-height: 6;
+            font-size: 20px;
+            @media (max-width: $phone) {
+                font-size: 15px;
+            }
+        }
+        @media (max-width: $phone) {
+            font-size: 12px;
+        }
     }
 
     .submission-form {
@@ -67,7 +83,7 @@
             font-size: 15px;
             margin-top: 10px;
             @media (max-width: $phone) {
-                font-size: 12px;
+                font-size: 11px;
                 width: 85%;
             }
         }
@@ -85,7 +101,7 @@
             font-size: 15px;
             margin-top: 10px;
             @media (max-width: $phone) {
-                font-size: 12px;
+                font-size: 11px;
                 width: 85%;
             }
         }

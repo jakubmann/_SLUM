@@ -10,6 +10,13 @@
         letter-spacing: 6px;
     }
 
+    &__text {
+        margin-top: 10px;
+        text-align: center;
+        font-family: $plex-mono;
+        font-size: 15px;
+    }
+
     &-form {
         text-align: center;
 

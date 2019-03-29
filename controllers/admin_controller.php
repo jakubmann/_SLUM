@@ -7,16 +7,13 @@ class admin_controller extends Controller
         $this->data['title'] = 'Admin';
         $this->admin = new Admin();
     }
-    public function login($password)
-    {
-        $this->admin->login($password);
-        echo "Logged in.";
-    }
     public function submissions()
     {
         $this->data['submissions'] = $this->admin->submissions();
         parent::__construct();
-        $this->view->render(null, 'submissions');
+        if (isset($_SEESION['admin']) && $_SESSION['admin'] == true) {
+            $this->view->render(null, 'submissions');
+        }
     }
 
     public function resolve()

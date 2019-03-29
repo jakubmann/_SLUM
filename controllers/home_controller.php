@@ -7,6 +7,7 @@ class home_controller extends Controller
         $this->data['title'] = 'Home';
         $this->model = new Posts();
         $this->data['posts'] = $this->model->getPosts(3);
+        parent::__construct();
     }
 
     public function pageNumber()
@@ -18,7 +19,6 @@ class home_controller extends Controller
 
     public function index()
     {
-        parent::__construct();
         $this->view->render('layout', 'home');
         $this->view->model = $this->model;
     }
@@ -34,7 +34,7 @@ class home_controller extends Controller
                 ob_start();
                 foreach($posts as $post)
                 {
-                    $post->render();
+                    $post->render($this->view->check_mobile());
                 }
                 ob_end_flush();
             }

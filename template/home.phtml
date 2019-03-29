@@ -8,13 +8,6 @@
     ?>
     <h2 class='home__heading' id='posts'>Most recent posts</h2>
     <div class='posts'>
-    <?php
-    ob_start();
-    foreach ($posts as $post) {
-        $post->render();
-    }
-    ob_end_flush();
-    ?>
     </div>
     <p class="pagenumber"></p>
     <div class='posts__button'>

@@ -1,24 +1,27 @@
 <?php
 
 class Admin {
-
     public function __construct() {
-        $this->passwords = array(
-            'Jakub' => hash('sha512', 'okurka')
-        );
-    }
+        if (isset($_SESSION['user_id'])) {
+            $result = Db::query(
+                'SELECT * FROM users WHERE id = :userid',
+            array(
+                    ':userid' => $_SESSION['user_id']
+                )
+            );
 
-    public function login($password) {
-        if (in_array($password, $this->passwords)) {
-            $_SESSION['admin'] = true;
-        }
-        else {
-            echo "Bad Login";
+            $row = $result->fetch(PDO::FETCH_ASSOC);
+            if ($row['class'] == '1') {
+                $_SESSION['admin'] = true;
+            }
+            else {
+                $_SESSION['admin'] = false;
+            }
         }
     }
 
     public function submissions() {
-        if ($_SESSION['admin']) {
+        if (isset($_SEESION['admin']) && $_SESSION['admin'] == true) {
             $sql = "SELECT * FROM submission";
             $stmt = Db::getConn()->prepare($sql);
             if ($stmt->execute()) {
@@ -36,4 +39,5 @@ class Admin {
             echo "Not logged in.";
         }
     }
+
 }

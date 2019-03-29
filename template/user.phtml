@@ -14,11 +14,9 @@
     <div class="posts">
         <h2 class="posts__heading">Posts</h2>
         <?php
-        ob_start();
         foreach ($posts as $post) {
-            $post->render();
+            $post->render($this->check_mobile());
         }
-        ob_end_flush();
         ?>
     </div>
 </div>

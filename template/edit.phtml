@@ -1,0 +1,17 @@
+<div class='edit'>
+    <h1 class='edit__title'>Edit Post</h1>
+    <div class='edit_text'>
+        <div id='error'>
+
+        </div>
+        <div class='edit_text__wrapper'>
+            <form class='edit-form' method='POST' id='edit-form' rel='<?=$post_id?>'>
+                <input type='text'  placeholder='Title' autocomplete="off" name='title' class='text__title' id='title'>
+                <textarea rows='15' autocomplete="off" cols='50' name ='body' class='text__body' id='body'></textarea>
+                <input type='hidden' name='id' value='<?=$post_id?>'>
+                <button class="submit_button" type="submit" name="submit">edit</button>
+            </form>
+        </div>
+    </div>
+    <img class='edit__delete' src='/img/bin.png' rel='<?=$post_id?>'>
+</div>

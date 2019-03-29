@@ -1,7 +1,17 @@
 <div class='post'>
     <a class='post__title' href='<?= '/post/id/' . $postdata['id']; ?>'><?= $postdata['title']; ?></a>
-    <a class='post__author' href='<?= '/user/id/' . $postdata['author']; ?>'><?=$postdata['authorName']?></a>
+    <?php
+    if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $postdata['author']) {
+        echo '<a href="/post/edit/' . $postdata['id'] . '"><img class="post__edit" src="/img/pencil.png"></a>';
+    }
+    ?>
+    <a class='post__author' href='<?= '/user/id/' . $postdata['author']; ?>'><?= $postdata['authorName'] ?></a>
     <br>
-    <p class='post__body'><?= nl2br($postdata['body']); ?></p>
+    <pre class='post__body'><?= $postdata['body']; ?></pre>
     <br>
+    <?php
+        if ($postdata['readmore'] == true) {
+            echo "<a class='post__readmore' href='/post/id/" . $postdata['id'] . "'>Read more</a>";
+        }
+    ?>
 </div>

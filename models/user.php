@@ -62,7 +62,7 @@ class User
 
                             if ($stmt->execute()) {
                                 echo '1'; //success
-                                $_SESSION['user_id'] = $row['id'];
+                                $_SESSION['user_id'] = $row['userid'];
                             } else {
                                 echo 'Query couldn\'t execute.';
                             }

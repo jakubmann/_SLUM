@@ -63,9 +63,9 @@ class Router
         //creating a controller
         if (!empty($name)) {
             $name = $name . '_controller';
-            $path = 'controllers/' . $name . '.php';
-            if (file_exists($path)) {
+            if (class_exists($name)) {
                 $controller = new $name();
+
             } else {
                 $this->error();
             }

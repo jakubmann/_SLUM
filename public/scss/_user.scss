@@ -55,7 +55,7 @@
         margin-bottom: 10px;
         border-bottom: $default_border;
         text-align: center;
-        
+
         @media screen and (max-width: $phone) {
             width: 90%;
         }
@@ -120,6 +120,12 @@
             font-family: $plex-mono;
             font-weight: 100;
             border-radius: 5px;
+        }
+        &__edit {
+            display: block;
+            width: 25px;
+            float: right;
+            margin-top: -25px;
         }
     }
 }
